@@ -1,0 +1,104 @@
+:root {
+  --font-family: Verdana, Geneva, Tahoma, sans-serif;
+  --border: 1px solid #000;
+
+  --mine-colour: #faa;
+  --safe-colour: #afa;
+  --marked-colour: #ffa;
+
+}
+
+[ts-theme="light"] {
+  --background-colour: #eee;
+  --grid-colour: #fff;
+  --text-colour: #000;
+}
+
+[ts-theme="dark"] {
+  --background-colour: #333;
+  --grid-colour: #555;
+  --text-colour: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  height: 100%;
+  background-color: var(--background-colour);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+body, div {
+  transition: background-color 0.3s linear, color 0.3s linear, border-color 0.3s linear;
+}
+
+div, label {
+  font-family: var(--font-family);
+  color: var(--text-colour);
+}
+
+#grid {
+  --rows: 0;
+  --columns: 0;
+  --tile-size: min(90vw / var(--columns), 90vh / var(--rows));
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), var(--tile-size));
+  grid-template-rows: repeat(var(--rows), var(--tile-size));
+  border: var(--border);
+  border-radius: 5px;
+  overflow: hidden;
+  width: fit-content;
+  height: fit-content;
+}
+
+#grid > .tile {
+  --tile-colour: var(var(--grid-colour));
+
+  width: var(--tile-size);
+  height: var(--tile-size);
+  aspect-ratio: 1;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--tile-colour);
+  cursor: pointer;
+  transition: background-color 0.1s linear;
+}
+
+#grid > .tile.disabled, #grid > .tile.disabled > * {
+  filter: brightness(0.9);
+  cursor: default;
+}
+
+#grid > .tile > div {
+  color: #000;
+}
+
+#controls {
+  position: absolute;
+  box-shadow: 0 1px 2px #000;
+  padding: 2px 5px 3px 5px;
+  border-radius: 5px;
+  top: 10px;
+  background-color: var(--grid-colour);
+  align-items: center;
+  display: flex;
+  gap: 5px;
+}
+
+#controls > * {
+  line-height: 1.2em;
+}
+
+#controls > input[type="number"] {
+  width: 3em;
+}
