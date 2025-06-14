@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head ts-theme="light">
+    <base href="" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="og:title" content="Minceweeper v2" />
+    <meta name="og:type" content="website" />
+    <meta name="og:image" content="assets/og-image.jpeg" />
+    <meta name="og:description" content="Description" />
+
+    <title>Minceweeper v2</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+
+    <link rel="stylesheet" href="src/main.css" />
+    <script src="src/main.js"></script>
+    <script src="https://abnormalnormality.github.io/Scripts-and-Pieces/scripts/themeSelector.js"></script>
+  </head>
+
+  <body>
+    <div id="controls">
+      <label for="rows">Rows: </label>
+      <input type="number" min="1" max="10" name="rows" value="5" id="rows" />
+      <label for="cols">Columns: </label>
+      <input type="number" min="1" max="10" name="cols" value="5" id="cols" />
+      <label for="mines">Mine density (%): </label>
+      <input
+        type="number"
+        min="1"
+        max="99"
+        name="mines"
+        value="15"
+        id="mines"
+        step="7"
+      />
+      <button id="start">Generate</button>
+    </div>
+
+    <div id="grid"></div>
+  </body>
+</html>
